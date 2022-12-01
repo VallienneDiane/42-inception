@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+  ####################################### NGINX #########################################
+  nginx:
+    build:
+      context: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    env_file:
+      - .env
+    ports:
+      - 443:443
+    volumes:
+      - /home/dvallien/data/wordpress:/var/www/html/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    restart: always
+  ####################################### MARIADB #########################################
+  mariadb:
+    build:
+      context: ./requirements/mariadb/
+      args:
+        MYSQL_USER: dvallien
+        MYSQL_DATABASE: mariadb
+        MYSQL_PASSWORD: inception
+        MYSQL_ROOT_PASSWORD: inception
+        MYSQL_HOST: mariadb
+    image: mariadb
+    container_name: mariadb
+    env_file:
+      - .env
+    volumes:
+      - /home/dvallien/data/mariadb:/var/lib/mariadb
+    networks:
+      - inception
+    restart: always
+  ####################################### WORDPRESS #########################################
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+    volumes:
+      - /home/dvallien/data/wordpress:/var/www/html/wordpress
+    networks:
+      - inception
+    restart: always
+
+networks:
+  inception:
+    driver: bridge
+    name: inception
