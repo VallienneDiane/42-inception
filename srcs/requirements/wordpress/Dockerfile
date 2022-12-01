@@ -13,7 +13,7 @@ RUN 	apt-get install -y php-fpm
 RUN		apt-get install -y php-mysql \
 &&		apt-get install -y php-mysqli
 
-RUN		apt-get install -y sendmail
+# RUN		apt-get install -y sendmail
 RUN		apt-get install -y mariadb-client
 
 # DOWNLOAD WP-CLI FORM GITHUB && DEFINE WP-CLI LIKE EXECUTABLE && MOVE WP-CLI
@@ -22,9 +22,16 @@ RUN 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cl
 &&		mv wp-cli.phar /usr/local/bin/wp
 
 RUN		mkdir -p /var/www/html/wordpress
+
+# Downloads core WordPress files
 RUN		wp core download  --allow-root --path="/var/www/html/wordpress"
 
+# Give permissions to upload img when editing pagen| -R execute root
+RUN		chown www-data:www-data /var/www/html/wordpress/wp-content -R
+
 EXPOSE 	9000
+
+# COPY	/tools/wp-config.php /tmp
 
 COPY	/tools/entrypoint.sh /tmp
 COPY	/tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf

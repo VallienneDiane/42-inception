@@ -23,11 +23,12 @@ services:
     build:
       context: ./requirements/mariadb/
       args:
-        MYSQL_USER: dvallien
-        MYSQL_DATABASE: mariadb
-        MYSQL_PASSWORD: inception
-        MYSQL_ROOT_PASSWORD: inception
-        MYSQL_HOST: mariadb
+        DB_ADMIN: dvallien
+        DB_USER: diane
+        DB_DATABASE: mariadb
+        DB_PASSWORD: inception
+        DB_ADMIN_PASSWORD: inception
+        DB_HOST: mariadb
     image: mariadb
     container_name: mariadb
     env_file:

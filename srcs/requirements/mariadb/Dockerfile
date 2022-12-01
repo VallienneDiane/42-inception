@@ -1,9 +1,10 @@
 FROM debian:buster
 
-ARG MYSQL_USER
-ARG MYSQL_DATABASE
-ARG MYSQL_PASSWORD
-ARG MYSQL_ROOT_PASSWORD
+ARG DB_USER
+ARG DB_ADMIN
+ARG DB_DATABASE
+ARG DB_USER_PASSWORD
+ARG DB_ADMIN_PASSWORD
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
@@ -21,10 +22,11 @@ RUN chown -R mysql:mysql /var/run/mysqld
     # GRANT             : assigns privileges and roles to MySQL user accounts and roles
     # FLUSH PRIVILEGES  : changes take effect immediately
 RUN service mysql start \
-&&  mysql -u root -e    "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE; \
-    ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'; \
-    GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; \
-    FLUSH PRIVILEGES;"
+&&  mysql -u root -e    "CREATE DATABASE IF NOT EXISTS $DB_DATABASE; \
+                        ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ADMIN_PASSWORD'; \
+                        GRANT ALL PRIVILEGES ON $DB_DATABASE.* TO '$DB_ADMIN'@'%' IDENTIFIED BY '$DB_ADMIN_PASSWORD'; \
+                        FLUSH PRIVILEGES;"
+                        # CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_USER_PASSWORD'; \
 
 # COPY CONTENT OF CONF FILE INTO THE CONF FILE OF THE CONTAINER
 COPY ./conf/mariadb.conf ./etc/mysql/mariadb.conf.d/50-server.cnf
