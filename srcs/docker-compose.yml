@@ -12,7 +12,7 @@ services:
     ports:
       - 443:443
     volumes:
-      - ./wordpress:/var/www/html/wordpress
+      - /home/dvallien/data/wordpress:/var/www/html/wordpress
     depends_on:
       - wordpress
     networks:
@@ -33,7 +33,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./mariadb:/var/lib/mariadb
+      - /home/dvallien/data/mariadb:/var/lib/mariadb
     networks:
       - inception
     restart: always
@@ -48,7 +48,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - ./wordpress:/var/www/html/wordpress
+      - /home/dvallien/data/wordpress:/var/www/html/wordpress
     networks:
       - inception
     restart: always
