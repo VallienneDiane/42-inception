@@ -1,7 +1,7 @@
-version: "3"
+version: "3.3"
 
 services:
-  ####################################### NGINX #########################################
+####################################### NGINX #########################################
   nginx:
     build:
       context: ./requirements/nginx
@@ -12,33 +12,32 @@ services:
     ports:
       - 443:443
     volumes:
-      - /home/dvallien/data/wordpress:/var/www/html/wordpress
+      - ./wordpress:/var/www/html/wordpress
     depends_on:
       - wordpress
     networks:
       - inception
     restart: always
-  ####################################### MARIADB #########################################
+####################################### MARIADB #########################################
   mariadb:
     build:
       context: ./requirements/mariadb/
       args:
-        DB_ADMIN: dvallien
-        DB_USER: diane
         DB_DATABASE: mariadb
-        DB_PASSWORD: inception
-        DB_ADMIN_PASSWORD: inception
+        DB_ROOT_PASSWORD: inception
+        DB_USER: tintin
+        DB_USER_PASSWORD: milou
         DB_HOST: mariadb
     image: mariadb
     container_name: mariadb
     env_file:
       - .env
     volumes:
-      - /home/dvallien/data/mariadb:/var/lib/mariadb
+      - ./mariadb:/var/lib/mariadb
     networks:
       - inception
     restart: always
-  ####################################### WORDPRESS #########################################
+####################################### WORDPRESS #########################################
   wordpress:
     build:
       context: ./requirements/wordpress
@@ -49,12 +48,28 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - /home/dvallien/data/wordpress:/var/www/html/wordpress
+      - ./wordpress:/var/www/html/wordpress
     networks:
       - inception
     restart: always
-
+####################################### NETWORKS #######################################
 networks:
   inception:
     driver: bridge
     name: inception
+####################################### VOLUMES ########################################
+volumes:
+  mariadb:
+    driver: local
+    name: mariadb
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/dvallien/data/mariadb
+  wordpress:
+    driver: local
+    name: wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/dvallien/data/wordpress

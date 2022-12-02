@@ -3,36 +3,41 @@ FROM debian:buster
 RUN 	apt-get update -y \
 &&		apt-get upgrade -y
 	
-# INSTALL Curl(Client url)
-	# CURL is a way that can hit a URL from our code to get an html response from it
-RUN		apt-get install wget curl less -y
+# INSTALL Curl(Client url): hit an URL from our code
+RUN		apt-get install curl less -y
 
 # INSTALL PHP
 RUN		apt-get install -y php
+
+# INSTALL PHP-FPM (FastCgi process manager)
+	# protocol that define how my web server (nginx) communicates 
+	# with my CGI programm (php) about the received request
 RUN 	apt-get install -y php-fpm
+
+# INSTALL MYSQL (old db driver) && MYSQLI (improved driver)
 RUN		apt-get install -y php-mysql \
 &&		apt-get install -y php-mysqli
 
-# RUN		apt-get install -y sendmail
+# INSTALL MARIADB-CLIENT TO CONNECT TO THE DATABASE 
 RUN		apt-get install -y mariadb-client
 
-# DOWNLOAD WP-CLI FORM GITHUB && DEFINE WP-CLI LIKE EXECUTABLE && MOVE WP-CLI
+# CLEAN CACHES
+RUN		apt-get clean -y
+
+# DOWNLOAD WP-CLI FROM GITHUB && DEFINE WP-CLI TO EXECUTABLE
 RUN 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 &&		chmod +x wp-cli.phar \
 &&		mv wp-cli.phar /usr/local/bin/wp
 
+# CREATE DIRECTORY TO INSTALL WORDPRESS
 RUN		mkdir -p /var/www/html/wordpress
-
-# Downloads core WordPress files
-RUN		wp core download  --allow-root --path="/var/www/html/wordpress"
-
-# Give permissions to upload img when editing pagen| -R execute root
-RUN		chown www-data:www-data /var/www/html/wordpress/wp-content -R
 
 EXPOSE 	9000
 
-# COPY	/tools/wp-config.php /tmp
-
+# COPY SH FILE IN TMP DIRECTORY
 COPY	/tools/entrypoint.sh /tmp
+
+# COPY OUR CONF FILE IN OUR CONTAINER
 COPY	/tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+
 ENTRYPOINT [ "bash", "/tmp/entrypoint.sh" ]
