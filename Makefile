@@ -6,53 +6,67 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/02 17:07:50 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/05 17:01:01 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := inception
-
 # -f : specify name and path of the compose file
 # -p : specify a project name
-DOCKER_COMPOSE := docker-compose -f srcs/docker-compose.yml -p $(NAME)
+DOCKER-COMPOSE := docker-compose -f srcs/docker-compose.yml
 
-all: up 
-
+all: build
+	
 # --detach : run containers in the background
-up:		build
-		$(COMPOSE) up --detach
-
-down:
-		$(COMPOSE) down
-
-# --parallel : allowing compose to build up to 5 img simultaneously.
+up:		
+		@printf "\033[0;32mBuild, recreate, start containers\033[0m\n"
+		$(DOCKER-COMPOSE) up -d
+		
 build:	volumes
-		$(COMPOSE) build --parallel
-			
-create:	build
-		$(COMPOSE) create
-
+		@printf "\033[0;32mBuild docker images from dockerfiles\033[0m\n"
+		$(DOCKER-COMPOSE) up --build -d	
 
 start:
-		$(COMPOSE) start
+		@printf "\033[0;32mStart stopped containers\033[0m\n"
+		$(DOCKER-COMPOSE) start
 		
 restart:
-		$(COMPOSE) restart
-		
+		@printf "\033[0;32mRestart stopped containers\033[0m\n"
+		$(DOCKER-COMPOSE) restart
+
 stop:
-		$(COMPOSE) stop
+		@printf "\033[0;32mStop containers (main process receive SIGTERM) \033[0m\n"
+		$(DOCKER-COMPOSE) stop
+		
+down:
+		@printf "\033[0;32mStop and remove containers, networks, volumes, images \033[0m\n"
+		$(DOCKER-COMPOSE) down
+		
+ps:
+		@printf "\033[0;32mList containers\033[0m\n"
+		$(DOCKER-COMPOSE) ps
 
-clean:
-			docker-compose --project-directory=srcs down --rmi all
+images:
+		@printf "\033[0;32mList images\033[0m\n"
+		docker images
 
-fclean:
-			docker-compose --project-directory=srcs down --rmi all --volumes
-			sudo rm -rf /home/$(USER)/data/*
+volume:
+		@printf "\033[0;32mList volumes\033[0m\n"
+		docker volume ls
+#docker volume inspect VOLUME
+		
+clean: 
+		@printf "\033[0;32mRemoves images and containers\033[0m\n"
+		$(DOCKER-COMPOSE) down --rmi all 
+
+fclean: 
+		@printf "\033[0;32mRemoves images, containers and volumes\033[0m\n"
+		$(DOCKER-COMPOSE) down --rmi all --volumes 
+		sudo rm -rf /home/$(USER)/data/*
+		
+prune:	down fclean
+		@printf "\033[0;32mRemoves all unused images, containers and volumes\033[0m\n"
+		sudo docker system prune -f -a
 
 re: fclean all
-
-volumes:
-		@mkdir -p /home/$(USER)/data/wordpress
-		@mkdir -p /home/$(USER)/data/mariadb
 		
-.PHONY: all up down build exec start restart stop clean fclean re volumes
+.PHONY: all build up volumes start restart down stop ps images volumes clean fclean re 
