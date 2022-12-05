@@ -6,7 +6,7 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/05 17:01:01 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/05 17:15:15 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ up:
 		
 build:	volumes
 		@printf "\033[0;32mBuild docker images from dockerfiles\033[0m\n"
-		$(DOCKER-COMPOSE) up --build -d	
+		dumb-init $(DOCKER-COMPOSE) up --build -d	
 
 start:
 		@printf "\033[0;32mStart stopped containers\033[0m\n"
