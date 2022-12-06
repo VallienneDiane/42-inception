@@ -11,6 +11,7 @@ RUN apt-get install -y nginx
 RUN apt-get install -y openssl
 
 # INSTALL WGET && DUMB-INIT
+# dumb-init is a simple process supervisor and init system designed to run as PID 1 inside minimal container environments
 RUN apt-get install -y wget
 RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 -O /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
