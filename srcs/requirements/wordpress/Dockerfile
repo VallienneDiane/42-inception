@@ -21,6 +21,11 @@ RUN		apt-get install -y php-mysql \
 # INSTALL MARIADB-CLIENT TO CONNECT TO THE DATABASE 
 RUN		apt-get install -y mariadb-client
 
+# INSTALL WGET && DUMB-INIT
+RUN apt-get install -y wget
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 -O /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
+
 # CLEAN CACHES
 RUN		apt-get clean -y
 
@@ -40,4 +45,6 @@ COPY	/tools/entrypoint.sh /tmp
 # COPY OUR CONF FILE IN OUR CONTAINER
 COPY	/tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
-ENTRYPOINT [ "bash", "/tmp/entrypoint.sh" ]
+ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
+
+CMD ["sh", "/tmp/entrypoint.sh" ]

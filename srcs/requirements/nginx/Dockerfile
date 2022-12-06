@@ -10,6 +10,11 @@ RUN apt-get install -y nginx
 # INSTALL OPENSSL TO GENERATE OUR KEY AND CERTIFICATE FILES
 RUN apt-get install -y openssl
 
+# INSTALL WGET && DUMB-INIT
+RUN apt-get install -y wget
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 -O /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
+
 # CLEAN OUT THE CACHE
 RUN	apt-get clean -y
 
@@ -31,5 +36,8 @@ RUN		ln -s /etc/nginx/sites-available/dvallien.42.fr.conf /etc/nginx/sites-enabl
 
 EXPOSE 443 
 
+ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
+
 # The daemon off directive tells Nginx to stay in the foreground
-ENTRYPOINT ["nginx", "-g", "daemon off;"]	
+CMD ["nginx", "-g", "daemon off;"]	
+

@@ -11,6 +11,11 @@ RUN apt-get upgrade -y
 # INSTALL MARIADB SERVER
 RUN apt-get install -y mariadb-server
 
+# INSTALL WGET && DUMB-INIT
+RUN apt-get install -y wget
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 -O /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
+
 # CLEAN CACHES
 RUN apt-get clean -y
 
@@ -33,5 +38,6 @@ COPY ./conf/mariadb.conf ./etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
 
-ENTRYPOINT ["mysqld", "--bind-address=0.0.0.0"]
+ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 
+CMD ["mysqld", "--bind-address=0.0.0.0"]
