@@ -38,6 +38,7 @@ COPY ./conf/mariadb.conf ./etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
 
+# Entrypoint is a partial command that gets prepended to my CMD instruction
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 
 CMD ["mysqld", "--bind-address=0.0.0.0"]
