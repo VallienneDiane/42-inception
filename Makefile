@@ -6,7 +6,7 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/06 10:21:20 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/07 14:44:44 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ up:
 		@printf "\033[0;32mBuild, recreate, start containers\033[0m\n"
 		$(DOCKER-COMPOSE) up -d
 		
-build:	volumes
+build:	
 		@printf "\033[0;32mBuild docker images from dockerfiles\033[0m\n"
 		$(DOCKER-COMPOSE) up --build -d	
 
@@ -69,4 +69,4 @@ prune:	down fclean
 
 re: fclean all
 		
-.PHONY: all build up volumes start restart down stop ps images volumes clean fclean re 
+.PHONY: all build up start restart down stop ps images volumes clean fclean re 
