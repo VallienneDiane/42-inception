@@ -6,7 +6,7 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/07 14:44:44 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/07 16:34:26 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ up:
 		@printf "\033[0;32mBuild, recreate, start containers\033[0m\n"
 		$(DOCKER-COMPOSE) up -d
 		
-build:	
+build:	up
 		@printf "\033[0;32mBuild docker images from dockerfiles\033[0m\n"
-		$(DOCKER-COMPOSE) up --build -d	
+		$(DOCKER-COMPOSE) build	
 
 start:
 		@printf "\033[0;32mStart stopped containers\033[0m\n"
