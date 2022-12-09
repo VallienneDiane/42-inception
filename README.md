@@ -11,16 +11,19 @@ It is incredibly fast, and it can run on any host with compatible Linux Kernel.
 <img src="https://blog.webnet.fr/wp-content/uploads/2020/03/VM-vs-Docker.png" width="550">
 </p>
 
-Docker engine comprises the docker daemon, an API interface, and Docker CLI. Docker daemon (dockerd) runs continuously as dockerd systemd service. It is responsible for building the docker images.
+Docker engine comprises the docker daemon, an API interface, and Docker CLI. 
 
 To manage images and run containers, dockerd calls the docker-containerd APIs.
 
 <p align="center">
-<img src="https://devopscube.com/wp-content/uploads/2020/09/engine-components-flow-min.png.webp" width="500">
+<img src="https://totlol.com/wp-content/uploads/2019/08/Docker-API-infographic-container-devops-nordic-apis.png" width="500">
 </p>
 
+The Daemon receives commands from the Docker client using the CLI or REST API. 
+Docker daemon runs continuously as dockerd systemd service. It is responsible for building the docker images.
+
 <p align="center">
-	<img src="https://www.debian.org/Pics/debian-logo-1024x576.png" width="200">
+	<img src="https://w7.pngwing.com/pngs/462/268/png-transparent-debian-gnu-linux-naming-controversy-linux-distribution-kali-linux-linux-text-logo-magenta-thumbnail.png" width="200">
 </p>
 
 ### Some installations to do in the virtual machine :
@@ -57,7 +60,7 @@ The purpose of a Dockerfile is to create an image using several instructions
 		ENTRYPOINT: master process
 
 <p align="center">
-	<img src="https://user.oc-static.com/upload/2019/05/08/15573466889395_1_QVFjsW8gyIXeCUJucmK4XA.png" width="200">
+	<img src="https://user.oc-static.com/upload/2019/05/08/15573466889395_1_QVFjsW8gyIXeCUJucmK4XA.png" width="300">
 </p>
 
 Compose is a tool for defining and running multi-container Docker applications. 
