@@ -112,7 +112,7 @@ Some common features seen in Nginx include:
 </p>
 
 <p align="center">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mariadb-seal-browntext.svg/2560px-Mariadb-seal-browntext.svg.png" width="400">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mariadb-seal-browntext.svg/2560px-Mariadb-seal-browntext.svg.png" width="350">
 </p>
 
 MariaDB Server is one of the most popular open source relational databases. It’s made by the original developers of MySQL and guaranteed to stay open source.
