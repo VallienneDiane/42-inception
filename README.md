@@ -23,7 +23,7 @@ The Daemon receives commands from the Docker client using the CLI or REST API.
 Docker daemon runs continuously as dockerd systemd service. It is responsible for building the docker images.
 
 <p align="center">
-	<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnibex2oNh447HZDC7AJfOdyeh-UEEZu1YizfJ8nUDMcYXuAh77rX7967-pYovBr3FH8m9iMMsFtO210rRqQY_t7naPPoGcYHXVLBFDNrnz8gV_5bTSIsMOcaSB59gpaPMehTctBxMdKJKpzCNMfgb0u_aWKgkOtjUqrLrfw4sSMsL-8s2DfpcqY0y/s0/PNG.VECTOR69.COM-Debian-Logo.png" width="200">
+	<img src="https://toppng.com/uploads/preview/debian-logo-vector-free-11574215518zxnqgrdild.png" width="200">
 </p>
 
 ### Some installations to do in the virtual machine :
