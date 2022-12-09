@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://www.docker.com/wp-content/uploads/2021/09/Docker-build.png" width="30">
+	<img src="https://www.docker.com/wp-content/uploads/2021/09/Docker-build.png" width="300">
 </p>
 
 Docker is a popular open-source project. It is a container engine that uses the Linux Kernel features like namespaces and control groups to create containers on top of an operating system. Docker is a technology or a tool developed to manage containers efficiently.
@@ -7,7 +7,7 @@ Docker is a popular open-source project. It is a container engine that uses the 
 Docker has an efficient workflow for moving the application from the developer’s laptop to the test environment to production.
 It is incredibly fast, and it can run on any host with compatible Linux Kernel. 
 
-<img src="https://blog.webnet.fr/wp-content/uploads/2020/03/VM-vs-Docker.png" width="350">
+<img src="https://blog.webnet.fr/wp-content/uploads/2020/03/VM-vs-Docker.png" width="650">
 
 Docker engine comprises the docker daemon, an API interface, and Docker CLI. Docker daemon (dockerd) runs continuously as dockerd systemd service. It is responsible for building the docker images.
 
@@ -16,7 +16,7 @@ To manage images and run containers, dockerd calls the docker-containerd APIs.
 <img src="https://devopscube.com/wp-content/uploads/2020/09/engine-components-flow-min.png.webp" width="200">
 
 <p align="center">
-	<img src="https://shaker.space/wp-content/uploads/2017/06/debian-logo.png" width="30">
+	<img src="https://shaker.space/wp-content/uploads/2017/06/debian-logo.png" width="300">
 </p>
 
 Some installations to do in the virtual machine :
@@ -33,7 +33,7 @@ Install last version docker-compose
 	sudo curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
 
 <p align="center">
-	<img src="https://miro.medium.com/max/1079/1*3ds-PdxGGMN-ZzJH95_lsA.png" width="50">
+	<img src="https://miro.medium.com/max/1079/1*3ds-PdxGGMN-ZzJH95_lsA.png" width="500">
 </p>
 
 A Dockerfile is a script that automatically creates containers on the Docker platform. 
@@ -53,7 +53,7 @@ The purpose of a Dockerfile is to create an image using several instructions
 		ENTRYPOINT: master process
 
 <p align="center">
-	<img src="https://user.oc-static.com/upload/2019/05/08/15573466889395_1_QVFjsW8gyIXeCUJucmK4XA.png" width="50">
+	<img src="https://user.oc-static.com/upload/2019/05/08/15573466889395_1_QVFjsW8gyIXeCUJucmK4XA.png" width="500">
 </p>
 
 Compose is a tool for defining and running multi-container Docker applications. 
