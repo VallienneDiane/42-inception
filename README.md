@@ -23,23 +23,6 @@ The Daemon receives commands from the Docker client using the CLI or REST API.
 Docker daemon runs continuously as dockerd systemd service. It is responsible for building the docker images.
 
 <p align="center">
-	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTirys5yrngDBmKgD2F27rkBsNwkW3QwrENYtwEbQqmy4airUjiLt-Gr6jxQKBU2gUOyz4&usqp=CAU" width="200">
-</p>
-
-### Some installations to do in the virtual machine :
-
-	su –
-	cat /etc/sudoers -> add login to get root rights
-
-	sudo apt-get install git
-	sudo apt-get install openssh-server
-	sudo apt-get install docker.io
-	sudo usermod -aG docker $USER -> give sudo right to user
-
-### Install last version docker-compose
-	sudo curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
-
-<p align="center">
 	<img src="https://miro.medium.com/max/1079/1*3ds-PdxGGMN-ZzJH95_lsA.png" width="500">
 </p>
 
@@ -84,5 +67,122 @@ Docker Compose is used for running multiple containers as a single service. Each
 - .env
 	ENV is mainly meant to provide default values for your future environment variables. Running dockerized applications can access environment variables. It's a great way to pass configuration values to your project. ARG values are not available after the image is built.
 
+<p align="center">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTirys5yrngDBmKgD2F27rkBsNwkW3QwrENYtwEbQqmy4airUjiLt-Gr6jxQKBU2gUOyz4&usqp=CAU" width="200">
+</p>
 
-source : https://devopscube.com/what-is-docker/
+### Some installations to do in the virtual machine :
+
+	su –
+	cat /etc/sudoers -> add login to get root rights
+
+	sudo apt-get install git
+	sudo apt-get install openssh-server
+	sudo apt-get install docker.io
+	sudo usermod -aG docker $USER -> give sudo right to user
+
+### Install last version docker-compose
+	sudo curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
+
+
+<p align="center">
+	<img src="http://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png" width="200">
+</p>
+
+Nginx, pronounced like “engine-ex”, is a popular open-source web server that also acts as an email proxy, reverse proxy, and load balancer. 
+
+The software’s structure is asynchronous and event-driven; which enables the processing of many requests at the same time. NGINX is highly scalable as well, meaning that its service grows along with its clients’ traffic.
+
+Some common features seen in Nginx include:
+
+- Reverse proxy with caching
+- IPv6
+- Load balancing
+- FastCGI support with caching
+- WebSockets
+- Handling of static files, index files, and auto-indexing
+- TLS/SSL (Transport Layer Security / Secure Sockets Layer) with SNI
+
+<p>
+	<img src="https://i.ytimg.com/vi/rpRPs0LACJQ/maxresdefault.jpg" width="300">
+	<img src="https://www.digitom.fr/wp-content/uploads/2019/01/SSL-Schema.png" width="300">
+</p>
+
+<p align="center">
+	<img src="https://www.pngfind.com/pngs/m/168-1682412_mariadb-is-designed-as-a-drop-in-replacement.png" width="200">
+</p>
+
+MariaDB Server is one of the most popular open source relational databases. It’s made by the original developers of MySQL and guaranteed to stay open source.
+
+The MariaDB database is a multi-user, multi-threaded SQL database server that consists of the MariaDB server daemon ( mysqld ) and many client programs and libraries.
+
+		mysql -u root -p
+		show databases;
+		show tables from mariadbl; OR use mariadb; show tables;
+
+		select user from mysql.user
+		select * from wp_comments;
+		select * from wp_users;
+		select comment_content from wp_contents;
+
+
+<p align="center">
+	<img src="https://logo-marque.com/wp-content/uploads/2020/11/WordPress-Logo.png" width="200">
+</p>
+
+WordPress is the simplest, most popular way to create your own website or blog.
+
+
+<p>
+	<img src="https://kinsta.com/fr/wp-content/uploads/sites/4/2016/08/configuration.png" width="300">
+	<img src="https://docs.ovh.com/de/public-cloud/installation_von_wordpress_auf_einer_instanz/images/wp_install2.png" width="300">
+</p>
+
+
+## PID 1
+
+A process running as PID 1 inside a container is treated specially by Linux: it ignores any signal with the default action. As a result, the process will not terminate on SIGINT or SIGTERM unless it is coded to do so.
+
+Process ID 1 is usually the init process primarily responsible for starting and shutting down the system. Originally, process ID 1 was not specifically reserved for init by any technical measures: it simply had this ID as a natural consequence of being the first process invoked by the kernel.
+
+Each process can have child processes, and all have a parent process. All except the very first process, the PID 1. PID 1, also known as init, is the common ancestor of all processes and is the foundation on which all of them run. Thus, you can imagine its importance.
+
+### Dumb-init
+dumb-init is a simple process supervisor and init system designed to run as PID 1 inside minimal container environments (such as Docker). It is deployed as a small, statically-linked binary written in C.
+Lightweight containers have popularized the idea of running a single process or service without normal init systems like systemd or sysvinit. However, omitting an init system often leads to incorrect handling of processes and signals, and can result in problems such as containers which can't be gracefully stopped, or leaking containers which should have been destroyed.
+dumb-init enables you to simply prefix your command with dumb-init. It acts as PID 1 and immediately spawns your command as a child process, taking care to properly handle and forward signals as they are received.
+
+
+## Sources
+
+https://devopscube.com/what-is-docker/
+https://medium.com/skilluped/10-tips-on-writing-a-proper-dockerfile-13956ceb435f
+https://docs.docker.com/engine/reference/run/
+https://www.hostinger.com/tutorials/run-docker-wordpress#Step_2_-_Set_Up_WordPress_Container_on_Docker
+https://grafikart.fr/tutoriels/dockerfile-636
+https://www.it-connect.fr/installation-de-wordpress-sous-linux/
+https://grafikart.fr/tutoriels/nginx-php-fpm-522
+https://www.youtube.com/watch?v=kIqWxjDj4IU
+https://www.youtube.com/watch?v=SnSH8Ht3MIc&t=491s
+https://www.wpbeginner.com/beginners-guide/how-to-edit-wp-config-php-file-in-wordpress/
+https://www.blogdumoderateur.com/comment-installer-wordpress/
+https://www.hostinger.fr/tutoriels/wp-cli
+https://wp-cli.org/
+https://developer.wordpress.org/cli/commands/core/install/
+https://developer.wordpress.org/cli/commands/
+https://wordpress.org/themes/
+https://doc.ubuntu-fr.org/mysql
+https://arctype.com/blog/mysqld/
+https://serverfault.com/questions/139323/how-to-bind-mysql-server-to-more-than-one-ip-address
+https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/
+https://mariadb.com/kb/en/mysqld-options/
+https://dev.mysql.com/doc/refman/8.0/en/grant.html
+https://phoenixnap.com/kb/mysql-server-through-socket-var-run-mysqld-mysqld-sock-2
+https://codingwithmanny.medium.com/configure-self-signed-ssl-for-nginx-docker-from-a-scratch-7c2bcd5478c6
+https://itecnote.com/tecnote/docker-the-difference-between-nginx-daemon-on-off-option/
+https://www.digicert.com/kb/csr-ssl-installation/nginx-openssl.htm
+https://www.baeldung.com/linux/nginx-docker-container
+https://librecours.net/module/picasoft/run/dk02/3_dockerfile_nginx.xhtml
+https://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html
+https://daveiscoding.com/why-do-you-need-an-init-process-inside-your-docker-container-pid-1
+
