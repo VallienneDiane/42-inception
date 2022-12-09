@@ -27,7 +27,6 @@ services:
         DB_ROOT_PASSWORD: inception
         DB_USER: tintin
         DB_USER_PASSWORD: milou
-        DB_HOST: mariadb
     image: mariadb
     container_name: mariadb
     env_file:
