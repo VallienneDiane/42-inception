@@ -84,6 +84,9 @@ Docker Compose is used for running multiple containers as a single service. Each
 ### Install last version docker-compose
 	sudo curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
 
+
+
+
 <p align="center">
 	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/2560px-Nginx_logo.svg.png" width="200">
 </p>
@@ -102,13 +105,14 @@ Some common features seen in Nginx include:
 - Handling of static files, index files, and auto-indexing
 - TLS/SSL (Transport Layer Security / Secure Sockets Layer) with SNI
 
-<p>
+<p align="center">
 	<img src="https://i.ytimg.com/vi/rpRPs0LACJQ/maxresdefault.jpg" width="500">
+	<br>
 	<img src="https://www.digitom.fr/wp-content/uploads/2019/01/SSL-Schema.png" width="500">
 </p>
 
 <p align="center">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mariadb-seal-browntext.svg/2560px-Mariadb-seal-browntext.svg.png" width="200">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mariadb-seal-browntext.svg/2560px-Mariadb-seal-browntext.svg.png" width="400">
 </p>
 
 MariaDB Server is one of the most popular open source relational databases. It’s made by the original developers of MySQL and guaranteed to stay open source.
@@ -126,7 +130,7 @@ The MariaDB database is a multi-user, multi-threaded SQL database server that co
 
 
 <p align="center">
-	<img src="https://logo-marque.com/wp-content/uploads/2020/11/WordPress-Logo.png" width="200">
+	<img src="https://logo-marque.com/wp-content/uploads/2020/11/WordPress-Logo.png" width="300">
 </p>
 
 WordPress is the simplest, most popular way to create your own website or blog.
