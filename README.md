@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="300">
+	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 
 Docker is a popular open-source project. It is a container engine that uses the Linux Kernel features like namespaces and control groups to create containers on top of an operating system. Docker is a technology or a tool developed to manage containers efficiently.
@@ -7,19 +7,23 @@ Docker is a popular open-source project. It is a container engine that uses the 
 Docker has an efficient workflow for moving the application from the developer’s laptop to the test environment to production.
 It is incredibly fast, and it can run on any host with compatible Linux Kernel. 
 
+<p align="center">
 <img src="https://blog.webnet.fr/wp-content/uploads/2020/03/VM-vs-Docker.png" width="550">
+</p>
 
 Docker engine comprises the docker daemon, an API interface, and Docker CLI. Docker daemon (dockerd) runs continuously as dockerd systemd service. It is responsible for building the docker images.
 
 To manage images and run containers, dockerd calls the docker-containerd APIs.
 
-<img src="https://devopscube.com/wp-content/uploads/2020/09/engine-components-flow-min.png.webp" width="500">
-
 <p align="center">
-	<img src="https://shaker.space/wp-content/uploads/2017/06/debian-logo.png" width="200">
+<img src="https://devopscube.com/wp-content/uploads/2020/09/engine-components-flow-min.png.webp" width="500">
 </p>
 
-Some installations to do in the virtual machine :
+<p align="center">
+	<img src="https://www.debian.org/Pics/debian-logo-1024x576.png" width="200">
+</p>
+
+### Some installations to do in the virtual machine :
 
 	su –
 	cat /etc/sudoers -> add login to get root rights
@@ -29,11 +33,11 @@ Some installations to do in the virtual machine :
 	sudo apt-get install docker.io
 	sudo usermod -aG docker $USER -> give sudo right to user
 
-Install last version docker-compose
+### Install last version docker-compose
 	sudo curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
 
 <p align="center">
-	<img src="https://miro.medium.com/max/1079/1*3ds-PdxGGMN-ZzJH95_lsA.png" width="500">
+	<img src="https://miro.medium.com/max/1079/1*3ds-PdxGGMN-ZzJH95_lsA.png" width="200">
 </p>
 
 A Dockerfile is a script that automatically creates containers on the Docker platform. 
