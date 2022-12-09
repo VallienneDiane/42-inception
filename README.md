@@ -84,9 +84,8 @@ Docker Compose is used for running multiple containers as a single service. Each
 ### Install last version docker-compose
 	sudo curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
 
-
 <p align="center">
-	<img src="http://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png" width="200">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/2560px-Nginx_logo.svg.png" width="200">
 </p>
 
 Nginx, pronounced like “engine-ex”, is a popular open-source web server that also acts as an email proxy, reverse proxy, and load balancer. 
@@ -104,12 +103,12 @@ Some common features seen in Nginx include:
 - TLS/SSL (Transport Layer Security / Secure Sockets Layer) with SNI
 
 <p>
-	<img src="https://i.ytimg.com/vi/rpRPs0LACJQ/maxresdefault.jpg" width="300">
-	<img src="https://www.digitom.fr/wp-content/uploads/2019/01/SSL-Schema.png" width="300">
+	<img src="https://i.ytimg.com/vi/rpRPs0LACJQ/maxresdefault.jpg" width="500">
+	<img src="https://www.digitom.fr/wp-content/uploads/2019/01/SSL-Schema.png" width="500">
 </p>
 
 <p align="center">
-	<img src="https://www.pngfind.com/pngs/m/168-1682412_mariadb-is-designed-as-a-drop-in-replacement.png" width="200">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mariadb-seal-browntext.svg/2560px-Mariadb-seal-browntext.svg.png" width="200">
 </p>
 
 MariaDB Server is one of the most popular open source relational databases. It’s made by the original developers of MySQL and guaranteed to stay open source.
@@ -133,9 +132,9 @@ The MariaDB database is a multi-user, multi-threaded SQL database server that co
 WordPress is the simplest, most popular way to create your own website or blog.
 
 
-<p>
-	<img src="https://kinsta.com/fr/wp-content/uploads/sites/4/2016/08/configuration.png" width="300">
-	<img src="https://docs.ovh.com/de/public-cloud/installation_von_wordpress_auf_einer_instanz/images/wp_install2.png" width="300">
+<p align="center">
+	<img src="https://kinsta.com/fr/wp-content/uploads/sites/4/2016/08/configuration.png" width="350">
+	<img src="https://docs.ovh.com/de/public-cloud/installation_von_wordpress_auf_einer_instanz/images/wp_install2.png" width="350">
 </p>
 
 
@@ -156,33 +155,63 @@ dumb-init enables you to simply prefix your command with dumb-init. It acts as P
 ## Sources
 
 https://devopscube.com/what-is-docker/
+
 https://medium.com/skilluped/10-tips-on-writing-a-proper-dockerfile-13956ceb435f
+
 https://docs.docker.com/engine/reference/run/
+
 https://www.hostinger.com/tutorials/run-docker-wordpress#Step_2_-_Set_Up_WordPress_Container_on_Docker
+
 https://grafikart.fr/tutoriels/dockerfile-636
+
 https://www.it-connect.fr/installation-de-wordpress-sous-linux/
+
 https://grafikart.fr/tutoriels/nginx-php-fpm-522
+
 https://www.youtube.com/watch?v=kIqWxjDj4IU
+
 https://www.youtube.com/watch?v=SnSH8Ht3MIc&t=491s
+
 https://www.wpbeginner.com/beginners-guide/how-to-edit-wp-config-php-file-in-wordpress/
+
 https://www.blogdumoderateur.com/comment-installer-wordpress/
+
 https://www.hostinger.fr/tutoriels/wp-cli
+
 https://wp-cli.org/
+
 https://developer.wordpress.org/cli/commands/core/install/
+
 https://developer.wordpress.org/cli/commands/
+
 https://wordpress.org/themes/
+
 https://doc.ubuntu-fr.org/mysql
+
 https://arctype.com/blog/mysqld/
+
 https://serverfault.com/questions/139323/how-to-bind-mysql-server-to-more-than-one-ip-address
+
 https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/
+
 https://mariadb.com/kb/en/mysqld-options/
+
 https://dev.mysql.com/doc/refman/8.0/en/grant.html
+
 https://phoenixnap.com/kb/mysql-server-through-socket-var-run-mysqld-mysqld-sock-2
+
 https://codingwithmanny.medium.com/configure-self-signed-ssl-for-nginx-docker-from-a-scratch-7c2bcd5478c6
+
 https://itecnote.com/tecnote/docker-the-difference-between-nginx-daemon-on-off-option/
+
 https://www.digicert.com/kb/csr-ssl-installation/nginx-openssl.htm
+
 https://www.baeldung.com/linux/nginx-docker-container
+
 https://librecours.net/module/picasoft/run/dk02/3_dockerfile_nginx.xhtml
+
 https://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html
+
 https://daveiscoding.com/why-do-you-need-an-init-process-inside-your-docker-container-pid-1
+
 
