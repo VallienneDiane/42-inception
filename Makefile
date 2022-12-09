@@ -6,7 +6,7 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/07 16:34:26 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/09 17:30:51 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@
 DOCKER-COMPOSE := docker-compose -f srcs/docker-compose.yml
 
 all: build
+
+bonus: build
 	
 # --detach : run containers in the background
 up:		
