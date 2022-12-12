@@ -51,15 +51,6 @@ services:
     networks:
       - inception
     restart: always
-####################################### BONUS ########################################
-  web:
-    image: mysite
-    build:
-      context: ./requirements/bonus/mysite
-    restart: always
-    ports:
-      - 3000:3000
-
 ####################################### NETWORKS #######################################
 networks:
   inception:
