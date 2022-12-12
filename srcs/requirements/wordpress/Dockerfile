@@ -35,9 +35,6 @@ RUN 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cl
 # CREATE DIRECTORY TO INSTALL WORDPRESS
 RUN		mkdir -p /var/www/html/wordpress
 
-# BONUS STATIC SITE
-COPY ./tools/mysite /var/www/html/wordpress/mysite
-
 EXPOSE 	9000
 
 # COPY SH FILE IN TMP DIRECTORY

@@ -6,7 +6,7 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/07 16:34:26 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/12 15:43:18 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,11 @@
 # -p : specify a project name
 DOCKER-COMPOSE := docker-compose -f srcs/docker-compose.yml
 
-all: build
-	
 # --detach : run containers in the background
-up:		
-		@printf "\033[0;32mBuild, recreate, start containers\033[0m\n"
-		$(DOCKER-COMPOSE) up -d
-		
-build:	up
-		@printf "\033[0;32mBuild docker images from dockerfiles\033[0m\n"
-		$(DOCKER-COMPOSE) build	
-
+all:
+	@printf "\033[0;32mBuild, recreate, start containers and build images from dockerfiles\033[0m\n"
+	$(DOCKER-COMPOSE) up -d --build
+	
 start:
 		@printf "\033[0;32mStart stopped containers\033[0m\n"
 		$(DOCKER-COMPOSE) start
@@ -69,4 +63,4 @@ prune:	down fclean
 
 re: fclean all
 		
-.PHONY: all build up start restart down stop ps images volumes clean fclean re 
+.PHONY: all start restart stop down ps images volume clean fclean prune re 
