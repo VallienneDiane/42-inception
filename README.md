@@ -134,7 +134,7 @@ The MariaDB database is a multi-user, multi-threaded SQL database server that co
 		select user from mysql.user
 		select * from wp_comments;
 		select * from wp_users;
-		select comment_content from wp_contents;
+		select comment_content from wp_comments;
 
 
 <p align="center">
