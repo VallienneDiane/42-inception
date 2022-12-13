@@ -11,15 +11,9 @@ RUN apt-get upgrade -y
 # INSTALL MARIADB SERVER
 RUN apt-get install -y mariadb-server
 
-# INSTALL DUMB-INIT
-RUN apt-get install -y dumb-init
-
-# CLEAN CACHES
-RUN apt-get clean -y
-
 # GIVE RIGHT TO MYSQL GROUP ON THE FILE
-RUN mkdir -p /var/run/mysqld
-RUN chown -R mysql:mysql /var/run/mysqld
+RUN mkdir -p /var/run/mysql
+RUN chown -R mysql:mysql /var/run/mysql
 
 # START MYSQL && CREATE DATABASE | -u user | -e enabled settings 
     # ALTER USER: allows you to change the authentication characteristics of a database user
@@ -35,6 +29,9 @@ RUN service mysql start \
 COPY ./conf/mariadb.conf ./etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
+
+# INSTALL DUMB-INIT
+RUN apt-get install -y dumb-init
 
 # Entrypoint is a partial command that gets prepended to my CMD instruction
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]

@@ -10,12 +10,6 @@ RUN apt-get install -y nginx
 # INSTALL OPENSSL TO GENERATE OUR KEY AND CERTIFICATE FILES
 RUN apt-get install -y openssl
 
-# INSTALL DUMB-INIT
-RUN apt-get install -y dumb-init
-
-# CLEAN OUT THE CACHE
-RUN	apt-get clean -y
-
 # GENERATE SSL KEY & CERTIFICATE
 	# 	req — to specify we want to use -x509
 	# 	x509 specify we want to create self-signed certificate
@@ -33,6 +27,9 @@ COPY	/conf/nginx.conf /etc/nginx/sites-available/dvallien.42.fr.conf
 RUN		ln -s /etc/nginx/sites-available/dvallien.42.fr.conf /etc/nginx/sites-enabled/dvallien.42.fr.conf
 
 EXPOSE 443 
+
+# INSTALL DUMB-INIT
+RUN apt-get install -y dumb-init
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 

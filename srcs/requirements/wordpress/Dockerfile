@@ -21,11 +21,6 @@ RUN		apt-get install -y php-mysql \
 # INSTALL MARIADB-CLIENT TO CONNECT TO THE DATABASE 
 RUN		apt-get install -y mariadb-client
 
-# INSTALL DUMB-INIT
-RUN apt-get install -y dumb-init
-
-# CLEAN CACHES
-RUN		apt-get clean -y
 
 # DOWNLOAD WP-CLI FROM GITHUB && DEFINE WP-CLI TO EXECUTABLE
 RUN 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
@@ -42,6 +37,9 @@ COPY	/tools/entrypoint.sh /tmp
 
 # COPY OUR CONF FILE IN OUR CONTAINER
 COPY	/tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+
+# INSTALL DUMB-INIT
+RUN apt-get install -y dumb-init
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 

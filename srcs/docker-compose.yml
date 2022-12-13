@@ -7,12 +7,10 @@ services:
       context: ./requirements/nginx
     image: nginx
     container_name: nginx
-    env_file:
-      - .env
     ports:
       - 443:443
     volumes:
-      - /home/dvallien/data/wordpress:/var/www/html/wordpress
+      - wordpress:/var/www/html/wordpress
     depends_on:
       - wordpress
     networks:
@@ -23,16 +21,16 @@ services:
     build:
       context: ./requirements/mariadb/
       args:
-        DB_DATABASE: mariadb
-        DB_ROOT_PASSWORD: inception
-        DB_USER: tintin
-        DB_USER_PASSWORD: milou
+        DB_DATABASE: ${DB_DATABASE}
+        DB_USER: ${DB_USER}
+        DB_USER_PASSWORD: ${DB_USER_PASSWORD}
+        DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     image: mariadb
     container_name: mariadb
     env_file:
       - .env
     volumes:
-      - /home/dvallien/data/mariadb:/var/lib/mariadb
+      - mariadb:/var/lib/mysql
     networks:
       - inception
     restart: always
@@ -47,7 +45,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - /home/dvallien/data/wordpress:/var/www/html/wordpress
+      - wordpress:/var/www/html/wordpress
     networks:
       - inception
     restart: always

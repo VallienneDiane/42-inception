@@ -6,7 +6,7 @@
 #    By: dvallien <dvallien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 16:22:14 by dvallien          #+#    #+#              #
-#    Updated: 2022/12/12 15:45:37 by dvallien         ###   ########.fr        #
+#    Updated: 2022/12/13 14:21:23 by dvallien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,15 @@
 DOCKER-COMPOSE := docker-compose -f srcs/docker-compose.yml
 
 # --detach : run containers in the background
-all:
-	@printf "\033[0;32mBuild, recreate, start containers and build images from dockerfiles\033[0m\n"
+all: up
+
+up:
+	@printf "\033[0;32mBuild, recreate, start containers\033[0m\n"
 	$(DOCKER-COMPOSE) up -d --build
+
+build:	
+		@printf "\033[0;32mBuild images from dockerfiles\033[0m\n"
+		$(DOCKER-COMPOSE) build
 	
 start:
 		@printf "\033[0;32mStart stopped containers\033[0m\n"
@@ -32,8 +38,8 @@ stop:
 		$(DOCKER-COMPOSE) stop
 		
 down:
-		@printf "\033[0;32mStop and remove containers, networks, volumes, images \033[0m\n"
-		$(DOCKER-COMPOSE) down
+		@printf "\033[0;32mStop and remove containers, networks\033[0m\n"
+		$(DOCKER-COMPOSE) down --rmi all --volumes --remove-orphans
 		
 ps:
 		@printf "\033[0;32mList containers\033[0m\n"
@@ -48,19 +54,17 @@ volume:
 		docker volume ls
 #docker volume inspect VOLUME
 		
-clean: 
-		@printf "\033[0;32mRemoves images and containers\033[0m\n"
-		$(DOCKER-COMPOSE) down --rmi all 
+clean: down
 
-fclean: 
+fclean: clean
 		@printf "\033[0;32mRemoves images, containers and volumes\033[0m\n"
-		$(DOCKER-COMPOSE) down --rmi all --volumes 
-		sudo rm -rf /home/$(USER)/data/*
+		sudo rm -rf /home/$(USER)/data/wordpress/*
+		sudo rm -rf /home/$(USER)/data/mariadb/*
 		
-prune:	down fclean
+prune:	fclean
 		@printf "\033[0;32mRemoves all unused images, containers and volumes\033[0m\n"
 		sudo docker system prune -f -a
 
 re: fclean all
 		
-.PHONY: all start restart stop down ps images volume clean fclean prune re 
+.PHONY: all up build start restart stop down ps images volume clean fclean prune re 
