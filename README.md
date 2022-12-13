@@ -165,6 +165,7 @@ dumb-init enables you to simply prefix your command with dumb-init. It acts as P
 
 
 ## Sources
+https://datascientest.com/docker-guide-complet
 
 https://devopscube.com/what-is-docker/
 
