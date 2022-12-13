@@ -2,7 +2,8 @@
 	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 
-Docker is a popular open-source project. It is a container engine that uses the Linux Kernel features like namespaces and control groups to create containers on top of an operating system. Docker is a technology or a tool developed to manage containers efficiently.
+Docker is a technology or a tool developed to manage containers efficiently. It is a platform for launching certain applications in software containers.
+A container engine use the Linux Kernel features, like namespaces and control groups, to create containers on top of an operating system. 
 
 Docker has an efficient workflow for moving the application from the developer’s laptop to the test environment to production.
 It is incredibly fast, and it can run on any host with compatible Linux Kernel. 
