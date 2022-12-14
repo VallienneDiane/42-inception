@@ -227,4 +227,6 @@ https://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html
 
 https://daveiscoding.com/why-do-you-need-an-init-process-inside-your-docker-container-pid-1
 
+https://projectatomic.io/blog/2015/07/what-are-docker-none-none-images/
+
 
